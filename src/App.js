@@ -1,16 +1,16 @@
-// const Total = (props) => {
-//   return (
-//     <>
-//       <p>
-//         Number of exercises {
-//           props.parts[0].exercises + 
-//           props.parts[1].exercises + 
-//           props.parts[2].exercises
-//         }.
-//       </p>
-//     </>
-//   );
-// }
+const Total = ({ parts }) => {
+  const total = parts.reduce((previousNum, currentNum) => {
+    return previousNum + currentNum.exercises
+  }, 0);
+
+  return (
+    <>
+      <p>
+        total of {total} exercises
+      </p>
+    </>
+  );
+}
 
 const Part = ({ part }) => {
   return (
@@ -45,6 +45,7 @@ const Course = ({ course }) => {
     <div>
       <Header name={course.name} />
       <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </div>
   )
 }
